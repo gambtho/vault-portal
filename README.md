@@ -1,53 +1,74 @@
-# angular-seed — the seed for AngularJS apps
+# Vault UI
 
-This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
-You can use it to quickly bootstrap your angular webapp projects and dev environment for these
-projects.
+vault-ui
+Features
 
-The seed contains a sample AngularJS application and is preconfigured to install the Angular
-framework and a bunch of development and testing tools for instant web development gratification.
+As an operator, I would like to
 
-The seed app doesn't do much, just shows how to wire two controllers and views together.
+be able to unseal a vault
+initialize a vault
+setup app id
+setup user id
+setup policy
+As a DBA, I would like to
+
+save usernames and passwords associated with a userID/appId
+https://www.vaultproject.io/intro/getting-started/apis.html
+
+Operator Flow
+
+Initialize curl -X PUT -d "{\"secret_shares\":1, \"secret_threshold\":1}" http://vault.yeti.homedepot.com/v1/sys/init
+
+response {"keys":["d1f1d9150069900f0c896cf9a1504175cce18c702046c83e827550cd9c22f9bf"],"root_token":"c0a62551-bf85-64d8-15b6-01b1178f6b92"}
+
+Save variable export VAULT_TOKEN=c0a62551-bf85-64d8-15b6-01b1178f6b92
+
+Unseal curl -X PUT -d '{"key": "d1f1d9150069900f0c896cf9a1504175cce18c702046c83e827550cd9c22f9bf"}' http://vault.yeti.homedepot.com/v1/sys/unseal
+
+response {"sealed":false,"t":1,"n":1,"progress":0}
+
+Setup auth method
+
+curl -X POST -H "X-Vault-Token:$VAULT_TOKEN" -d '{"type":"app-id"}' http://vault.yeti.homedepot.com/v1/sys/auth/app-id
+
+4a. Setup permissions?
+
+on console — vault policy-write pcfpol policy.hcl path "secret/pcfpol" { policy = "write" } path "auth/app-id/map/app-id/*" { policy = "write" } path "auth/app-id/map/user-id/pcf_id" { policy = "write" } path "auth/token/create-orphan" { policy = "write" }
+
+Setup policy
+
+curl -X POST -d '{"value":"pcfpol"}' -H "X-Vault-Token:$VAULT_TOKEN" http://vault.yeti.homedepot.com/v1/auth/app-id/map/app-id/pcf_id
+
+Setup ID
+
+curl -X POST -d '{"value":"pcf_id"}' -H "X-Vault-Token:$VAULT_TOKEN" http://vault.yeti.homedepot.com/v1/auth/app-id/map/user-id/app_id1
+
+DB Flow 1. Login
+
+curl http://vault.yeti.homedepot.com/v1/auth/app-id/login -d '{"app_id":"pcf_id", "user_id":"app_id1"}'
+
+with response export VAULT_TOKEN=<<45df5c02-0e94-808b-67c7-a8cda11fb45c>>
+
+Save user and password
+
+curl -X POST -d '{ "db_username":"dbuname1", "db_password":"dbpword1" }' -H "X-Vault-Token:$VAULT_TOKEN" http://vault.yeti.homedepot.com/v1/secret/app_id1
+
+Dev Flow
+
+a curl http://vault.yeti.homedepot.com/v1/auth/app-id/login -d '{"app_id":"pcf_id", "user_id":"app_id1"}' (export VAULT_TOKEN=)
+
+initial login by service, response includes policy and token b. curl -X POST -d '{"value":""}' -H "X-Vault-Token:" http://vault.yeti.homedepot.com/v1/auth/app-id/map/app-id/app_dv
+mapping of dynamic app value to policy by service c. curl -X POST -d '{"value":"app_dv"}' -H "X-Vault-Token:$VAULT_TOKEN" http://vault.yeti.homedepot.com/v1/auth/app-id/map/user-id/pcf_id
+mapping of dynamic app value to user id d. curl http://vault.yeti.homedepot.com/v1/auth/app-id/login -d '{"app_id":"app_dv", "user_id":"pcf_id"}'
+login by todd svc using dynamic app value, response includes token e. curl -X POST -d '{"num_uses":"1", "ttl":"1m", "no_default_profile":"true"}' -H "X-Vault-Token:" http://vault.yeti.homedepot.com/v1/auth/token/create-orphan
+creation of 1 time use token for application by service f. curl -X POST -H "X-Vault-Token:" http://vault.yeti.homedepot.com/v1/auth/token/revoke-self
+revoke of token from a g. curl http://vault.yeti.homedepot.com/v1/secret/pcfpol -H "X-Vault-Token:"
+application can get password using 1 time use token
 
 
-## Getting Started
 
-To get you started you can simply clone the angular-seed repository and install the dependencies:
 
-### Prerequisites
-
-You need git to clone the angular-seed repository. You can get git from
-[http://git-scm.com/](http://git-scm.com/).
-
-We also use a number of node.js tools to initialize and test angular-seed. You must have node.js and
-its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
-
-### Clone angular-seed
-
-Clone the angular-seed repository using [git][git]:
-
-```
-git clone https://github.com/angular/angular-seed.git
-cd angular-seed
-```
-
-If you just want to start a new project without the angular-seed commit history then you can do:
-
-```bash
-git clone --depth=1 https://github.com/angular/angular-seed.git <your-project-name>
-```
-
-The `depth=1` tells git to only pull down one commit worth of historical data.
-
-### Install Dependencies
-
-We have two kinds of dependencies in this project: tools and angular framework code.  The tools help
-us manage and test the application.
-
-* We get the tools we depend upon via `npm`, the [node package manager][npm].
-* We get the angular code via `bower`, a [client-side code package manager][bower].
-
-We have preconfigured `npm` to automatically run `bower` so we can simply do:
+# Setup 
 
 ```
 npm install
@@ -108,7 +129,7 @@ e2e-tests/            --> end-to-end tests
 
 ## Testing
 
-There are two kinds of tests in the angular-seed application: Unit tests and End to End tests.
+There are two kinds of tests in this applicatio : Unit tests and End to End tests.
 
 ### Running Unit Tests
 
@@ -176,11 +197,7 @@ This script will execute the end-to-end tests against the application being host
 development server.
 
 
-## Updating Angular
-
-Previously we recommended that you merge in changes to angular-seed into your own fork of the project.
-Now that the angular framework library code and tools are acquired through package managers (npm and
-bower) you can use these tools instead to update the dependencies.
+## Updating
 
 You can update the tool dependencies by running:
 
