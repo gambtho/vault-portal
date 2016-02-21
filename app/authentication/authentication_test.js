@@ -1,31 +1,29 @@
 'use strict';
-var sandbox, authenticationService, login;
+var sandbox, authenticationCtrl, login;
+
+beforeEach(module('myApp.authentication.ctrl'));
 
 describe('myApp.authentication.view', function() {
 
-  beforeEach(function(){
-    debugger;
-    //module('myApp.authentication');
-    inject(function ($injector) {
-      debugger;
-          sandbox = sinon.sandbox.create();
-          authenticationService = $injector.get('myService');
-          login = $injector.get('somethingUnderTest');
-          debugger;
-      })
-  });
+  //beforeEach(function() {
+  //  inject(function ($injector) {
+  //        sandbox = sinon.sandbox.create();
+  //        authenticationCtrl = $injector.get('AuthenticationCtrl');
+  //        login = $injector.get('login');
+  //    })
+  //});
 
-  describe('view1 controller', function(){
+
+  describe('auth controller', function(){
 
     it('should ....', inject(function($controller) {
-      //spec body
-      var authenticationCtrl = $controller('AuthenticationCtrl');
+      var authenticationCtrl = $controller('LoginController');
       expect(authenticationCtrl).toBeDefined();
       expect(authenticationCtrl.login).toBeDefined();
     }));
 
     it('should authenticate the user', inject(function($controller){
-    
+
      debugger; 
     
     }));
