@@ -1,12 +1,10 @@
 ﻿'use strict';
-//http://jbavari.github.io/blog/2014/06/11/unit-testing-angularjs-services/
-//http://www.benlesh.com/2013/05/angularjs-unit-testing-controllers.html
 
 angular.module('myApp.auth', ['ngRoute'] )
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/authentication', {
-            templateUrl: 'authentication/authentication.html',
+        $routeProvider.when('/auth', {
+            templateUrl: 'auth/auth.html',
             controller: 'LoginController'
         });
     }])
@@ -48,7 +46,7 @@ angular.module('myApp.auth', ['ngRoute'] )
         //
         //    return deferred.promise;
 
-        /* Use this for real authentication
+        /* Use this for real auth
          ----------------------------------------------*/
         //$http.post('/api/authenticate', { username: username, password: password })
         //    .success(function (response) {

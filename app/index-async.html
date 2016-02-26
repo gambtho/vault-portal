@@ -33,6 +33,7 @@
       'app.js',
       'view1/view1.js',
       'view2/view2.js',
+      'auth/auth.js',
       'components/version/version.js',
       'components/version/version-directive.js',
       'components/version/interpolate-filter.js'
@@ -41,18 +42,19 @@
       angular.bootstrap(document, ['myApp']);
     });
   </script>
-  <title>My AngularJS App</title>
+  <title>Vault Portal</title>
   <link rel="stylesheet" href="app.css">
 </head>
 <body ng-cloak>
   <ul class="menu">
     <li><a href="#/view1">view1</a></li>
     <li><a href="#/view2">view2</a></li>
+    <li><a href="#/auth">authentication</a></li>
   </ul>
 
   <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <div>Vault Portal app: v<span app-version></span></div>
 
 </body>
 </html>

@@ -9,5 +9,5 @@ angular.module('myApp', [
   'myApp.version',
 ]).
 config(['$routeProvider', '$injector', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/auth'});
 }]);
