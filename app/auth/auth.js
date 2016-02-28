@@ -28,18 +28,14 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
             };
         })
 
-    .factory('auth', function ($http, $q, $timeout) {
+    .factory('auth', function ($http) {
         return {
+
             login: function (username, password) {
-                var defer = $q.defer();
-                $timeout(function () {
-                    if (username === 'test' && password === 'test') {
-                        defer.resolve({success: true});
-                    } else {
-                        defer.reject({success: false, message: 'Username or password is incorrect'});
-                    }
-                }, 100);
-                return defer.promise;
+                return $http.get("vaultAddress?" + username + "&" + password)
+                    .then(function (result) {
+                        return result.data;
+                    });
             }
         }
     });

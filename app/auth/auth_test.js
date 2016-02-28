@@ -30,6 +30,10 @@ describe('Auth', function() {
 
         });
 
+        it('should have login controller defined', function () {
+            expect(ctrl).toBeDefined();
+        });
+
         it('should start with user and password not populated', function () {
             expect($scope.username).toEqual('');
             expect($scope.password).toEqual('');
@@ -61,16 +65,56 @@ describe('Auth', function() {
     });
 
     describe('service', function() {
+        var httpBackend, auth;
+
         beforeEach(function () {
 
+            inject(function ($httpBackend, _auth_) {
+                auth = _auth_;
+                httpBackend = $httpBackend;
+
+            });
+        });
+
+        afterEach(function() {
+            httpBackend.verifyNoOutstandingExpectation();
+            httpBackend.verifyNoOutstandingRequest();
+        });
+
+        it('should have auth service defined', function () {
+            expect(auth).toBeDefined();
         });
 
         it('should return token when valid user and password are provided', function () {
+            var result = {};
+            var returnData = 'token';
+            httpBackend.expectGET('vaultAddress?user&password').respond(returnData);
 
+            var returnedPromise = auth.login('user', 'password');
+
+            returnedPromise.then(function(response) {
+                result = response;
+            });
+
+            httpBackend.flush();
+
+            expect(result).toEqual('token');
         });
 
         it('should return an error when in-valid user and password are provided', function () {
+            var result = {};
+            var returnData = 'no-token';
+            httpBackend.expectGET('vaultAddress?bad-user&bad-password').respond(returnData);
 
+            var returnedPromise = auth.login('bad-user', 'bad-password');
+
+            returnedPromise.then(function(response) {
+                result = response;
+            });
+
+            httpBackend.flush();
+
+            expect(result).toEqual('no-token');
         });
     });
 });
