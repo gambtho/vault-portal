@@ -5,83 +5,43 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/auth', {
             templateUrl: 'auth/auth.html',
-            controller: 'LoginController'
+            controller: 'loginController',
+            factory: 'auth'
         });
     }])
 
-    .controller('LoginController', ['$scope', 'Auth',
-        function ($scope, Auth) {
+    .controller('loginController', function ($scope, $location, auth) {
             $scope.username   = '';
             $scope.password  = '';
             $scope.token = '';
 
-            $scope.login = function () {
-                $scope.dataLoading = true;
-                Auth.login($scope.username, $scope.password)
+            $scope.login = function() {
+                auth.login($scope.username, $scope.password)
                     .then(function (response) {
-                        if (response.success) {
-                            Auth.setToken($scope.username);
-                            $location.path('/store');
-                        } else {
-                            $scope.error = response.message;
-                            $scope.dataLoading = false;
-                        }
+                        auth.setToken(response);
+                        $location.path('/store');
+                    }, function (reason) {
+                        $scope.error = reason;
                     });
             };
-        }])
+        })
 
-    .factory('Auth', function ($scope, $http, $q, $timeout) {
-
-        //var login = function (username, password, callback) {
-        //
-        //    var deferred = $q.defer();
-        //
-        //    $timeout(function () {
-        //        var response = {success: username === 'test' && password === 'test'};
-        //        if (!response.success) {
-        //            response.message = 'Username or password is incorrect';
-        //        }
-        //        callback(response);
-        //    }, 100);
-        //
-        //    return deferred.promise;
-
-        /* Use this for real auth
-         ----------------------------------------------*/
-        //$http.post('/api/authenticate', { username: username, password: password })
-        //    .success(function (response) {
-        //        callback(response);
-        //    });
-
-        //};
-
-        //var readToken = function readToken() {
-        //    var storedToken = window.localStorage.getItem('token');
-        //    try {
-        //        if (storedToken) {
-        //            // Note: Using a simple user model here
-        //            $scope.token = JSON.parse(storedToken);
-        //        }
-        //    } catch (ex) { /* Silently fail..*/
-        //    }
-        //};
-
-        var setToken= function (token) {
-            $scope.token = token;
-        };
+    .factory('auth', function ($http, $q, $timeout) {
 
         return {
-            login: function (username, password, callback) {
+            login: function (username, password) {
                 var deferred = $q.defer();
                 $timeout(function () {
-                    var response = {success: username === 'test' && password === 'test'};
-                    if (!response.success) {
-                        response.message = 'Username or password is incorrect';
+                    if (username !== null && password === password) {
+                        deferred.resolve({success: true});
+                    } else {
+                        deferred.reject({success: false, message: 'Username or password is incorrect'});
                     }
-                    callback(response);
                 }, 100);
                 return deferred.promise;
             },
-            setToken: setToken
-        };
+            setToken: function(token) {
+              //
+            }
+        }
     });

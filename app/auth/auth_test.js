@@ -5,7 +5,7 @@ describe('Auth Test', function() {
 
     beforeEach(function (){
 
-        authServiceMock = jasmine.createSpyObj('Auth', ['login']);
+        authServiceMock = jasmine.createSpyObj('auth', ['login']);
         module('vaultPortal.auth');
 
         // $rootScopde - injected to create a new $scope instance.
@@ -31,9 +31,9 @@ describe('Auth Test', function() {
             // **NOTE**: this is the only time the controller function
             // will be run, so anything that occurs inside of that
             // will already be done before the first spec.
-            ctrl = $controller('LoginController', {
+            ctrl = $controller('loginController', {
                 $scope: $scope,
-                Auth: authServiceMock
+                auth: authServiceMock
             });
         });
     });

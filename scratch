@@ -1,7 +1,41 @@
-angular.module('myModule', ['ui.bootstrap']);
-
-https://github.com/angular-ui/bootstrap
 http://jbavari.github.io/blog/2014/06/11/unit-testing-angularjs-services/
+
+http://jasonwatmore.com/post/2015/03/10/AngularJS-User-Registration-and-Login-Example.aspx
+http://codetunnel.com/angularjs-controller-as-or-scope/
+http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/
+
 http://www.benlesh.com/2013/05/angularjs-unit-testing-controllers.html
 
-https://www.npmjs.com/package/bootstrap-css-only
+
+        /* Use this for real auth
+         ----------------------------------------------*/
+        //$http.post('/api/authenticate', { username: username, password: password })
+        //    .success(function (response) {
+        //        callback(response);
+        //    });
+
+        //};
+
+        //var readToken = function readToken() {
+        //    var storedToken = window.localStorage.getItem('token');
+        //    try {
+        //        if (storedToken) {
+        //            // Note: Using a simple user model here
+        //            $scope.token = JSON.parse(storedToken);
+        //        }
+        //    } catch (ex) { /* Silently fail..*/
+        //    }
+        //};
+
+
+
+            .config(['$routeProvider', function($routeProvider) {
+                $routeProvider.when('/auth', {
+                    templateUrl: 'auth/auth.html',
+                    controller: 'loginController',
+                    //controllerAs: 'controller',
+                    factory: 'auth'
+                });
+            }])
+
+
