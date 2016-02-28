@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>
-<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Vault Portal</title>
     <meta name="description" content="UI for interacting with Vault">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="app.css">
     <!-- use CDN in prod -->
     <link href="../node_modules/bootstrap-css-only/css/bootstrap.css" rel="stylesheet">
     <link href="../node_modules/bootstrap-css-only/css/bootstrap-theme.css" rel="stylesheet">
@@ -25,19 +17,13 @@
             <a class="navbar-brand" href="#">Vault Portal</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="#/view1">view1</a></li>
-            <li><a href="#/view2">view2</a></li>
             <li><a href="#/auth">auth</a></li>
+            <li><a href="#/store">store</a></li>
+            <li><a href="#/status">status</a></li>
         </ul>
     </div>
 </nav>
 <div class="container-fluid">
-
-        <!--[if lt IE 7]>
-        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a
-                href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
         <div ng-view></div>
 
         <div>Vault Portal: v<span app-version></span></div>
@@ -49,8 +35,8 @@
         <script src="../node_modules/angular-route/angular-route.js"></script>
         <script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
         <script src="app.js"></script>
-        <script src="view1/view1.js"></script>
-        <script src="view2/view2.js"></script>
+        <script src="store/store.js"></script>
+        <script src="status/status.js"></script>
         <script src="auth/auth.js"></script>
         <script src="components/version/version.js"></script>
         <script src="components/version/version-directive.js"></script>

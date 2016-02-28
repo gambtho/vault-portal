@@ -6,7 +6,7 @@ describe('Auth Test', function() {
     beforeEach(function (){
 
         authServiceMock = jasmine.createSpyObj('Auth', ['login']);
-        module('myApp.auth');
+        module('vaultPortal.auth');
 
         // $rootScopde - injected to create a new $scope instance.
         // $controller - injected to create an instance of our controller.

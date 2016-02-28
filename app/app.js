@@ -1,13 +1,13 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+angular.module('vaultPortal', [
     'ngRoute',
     'ui.bootstrap',
-    'myApp.view1',
-    'myApp.view2',
-    'myApp.auth',
-    'myApp.version',
+    'vaultPortal.store',
+    'vaultPortal.status',
+    'vaultPortal.auth',
+    'vaultPortal.version',
 ]).
 config(['$routeProvider', '$injector', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/auth'});

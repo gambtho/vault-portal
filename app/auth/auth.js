@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('myApp.auth', ['ngRoute'] )
+angular.module('vautPortal.auth', ['ngRoute'] )
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/auth', {
@@ -21,7 +21,7 @@ angular.module('myApp.auth', ['ngRoute'] )
                     .then(function (response) {
                         if (response.success) {
                             Auth.setToken($scope.username);
-                            $location.path('/view1');
+                            $location.path('/store');
                         } else {
                             $scope.error = response.message;
                             $scope.dataLoading = false;
