@@ -22,6 +22,8 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
                         $location.path('/store');
                     }, function (reason) {
                         $scope.error = reason;
+                        $scope.password = '';
+                        $location.path('/auth');
                     });
             };
         })
@@ -30,15 +32,15 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
 
         return {
             login: function (username, password) {
-                var deferred = $q.defer();
+                var defer = $q.defer();
                 $timeout(function () {
-                    if (username !== null && password === password) {
-                        deferred.resolve({success: true});
+                    if (username === 'test' && password === 'test') {
+                        defer.resolve({success: true});
                     } else {
-                        deferred.reject({success: false, message: 'Username or password is incorrect'});
+                        defer.reject({success: false, message: 'Username or password is incorrect'});
                     }
                 }, 100);
-                return deferred.promise;
+                return defer.promise;
             },
             setToken: function(token) {
               //
