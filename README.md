@@ -1,5 +1,7 @@
 # Vault UI
 
+[![wercker status](https://app.wercker.com/status/545bc24f964b04486cb30defe0bcfa54/m "wercker status")](https://app.wercker.com/project/bykey/545bc24f964b04486cb30defe0bcfa54)
+
 ## Features
 
 As an operator, I would like to be able to initialize a new vault

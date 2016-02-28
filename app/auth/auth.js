@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('vautPortal.auth', ['ngRoute'] )
+angular.module('vaultPortal.auth', ['ngRoute'] )
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/auth', {

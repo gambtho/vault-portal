@@ -10,14 +10,14 @@ module.exports = function(config){
             'app/components/**/*.js',
             'app/auth/**/*.js',
             'app/store/**/*.js',
-            'app/view*/**/*.js'
+            'app/status/**/*.js'
         ],
 
         autoWatch : true,
 
         frameworks: ['jasmine', 'sinon'],
 
-        browsers : ['Chrome'],
+        browsers : ['PhantomJS'],
 
         junitReporter : {
             outputFile: 'test_out/unit.xml',
