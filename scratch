@@ -1,12 +1,13 @@
-http://jbavari.github.io/blog/2014/06/11/unit-testing-angularjs-services/
-https://thinkster.io/angularjs-jwt-auth
+http://jbavari.github.io/blog/2014/06/11/unit-testing-angularjs-services/ (testing)
+https://thinkster.io/angularjs-jwt-auth (use jwt)
+http://www.bennadel.com/blog/2632-creating-asynchronous-alerts-prompts-and-confirms-in-angularjs.htm (alerts)
 
 
-http://jasonwatmore.com/post/2015/03/10/AngularJS-User-Registration-and-Login-Example.aspx
-http://codetunnel.com/angularjs-controller-as-or-scope/
+http://codetunnel.com/angularjs-controller-as-or-scope/ (same as below, clean-up controller)
 http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/
 
-http://www.benlesh.com/2013/05/angularjs-unit-testing-controllers.html
+http://www.benlesh.com/2013/05/angularjs-unit-testing-controllers.html (how to test)
+http://brewhouse.io/blog/2014/12/09/authentication-made-simple-in-single-page-angularjs-applications.html (login modal)
 
 
         /* Use this for real auth

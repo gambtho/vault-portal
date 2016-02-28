@@ -18,7 +18,7 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
             $scope.login = function() {
                 auth.login($scope.username, $scope.password)
                     .then(function (response) {
-                        auth.setToken(response);
+                        $scope.token = response;
                         $location.path('/store');
                     }, function (reason) {
                         $scope.error = reason;
@@ -29,7 +29,6 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
         })
 
     .factory('auth', function ($http, $q, $timeout) {
-
         return {
             login: function (username, password) {
                 var defer = $q.defer();
@@ -41,9 +40,6 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
                     }
                 }, 100);
                 return defer.promise;
-            },
-            setToken: function(token) {
-              //
             }
         }
     });
