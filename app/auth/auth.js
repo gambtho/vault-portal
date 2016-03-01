@@ -11,12 +11,13 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
     }])
 
     .controller('loginController', function ($scope, $location, auth) {
-            $scope.username   = '';
-            $scope.password  = '';
+            $scope.username   = 'pcf-space-id';
+            $scope.password  = 'pcf-service-instance-id';
+            $scope.url = 'http://tg23qo-prod.apigee.net/vault';
             $scope.token = '';
 
             $scope.login = function() {
-                auth.login($scope.username, $scope.password)
+                auth.login($scope.url, $scope.username, $scope.password)
                     .then(function (response) {
                         $scope.token = response;
                         $location.path('/store');
@@ -30,12 +31,18 @@ angular.module('vaultPortal.auth', ['ngRoute'] )
 
     .factory('auth', function ($http) {
         return {
-
-            login: function (username, password) {
-                return $http.get("vaultAddress?" + username + "&" + password)
-                    .then(function (result) {
-                        return result.data;
-                    });
+            login: function (url, username, password) {
+                console.log(url, username, password);
+                return $http({
+                    url: url + '/v1/auth/app-id/login',
+                    method: "POST",
+                    data: {app_id: username, user_id: password},
+                })
+                    .then(function (results) {
+                        console.log(results.data.auth.client_token);
+                        return(results.data.auth.client_token);
+                    })
             }
+
         }
     });

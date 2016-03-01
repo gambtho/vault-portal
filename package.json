@@ -22,7 +22,7 @@
   },
   "scripts": {
     "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000 -c-1",
+    "start": "http-server -a localhost.yeti.homedepot.com -p 8000 -c-1",
     "pretest": "npm install",
     "test-watch": "karma start karma.conf.js",
     "test": "karma start karma.conf.js  --single-run",
