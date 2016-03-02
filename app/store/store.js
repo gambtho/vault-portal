@@ -1,29 +1,33 @@
 'use strict';
 
-angular.module('vaultPortal.store', ['ngRoute'] )
+angular.module('vaultPortal.store', ['ngRoute'])
 
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/store', {
             templateUrl: 'store/store.html',
             controller: 'storeController',
-            factory: store
+            factory: 'store'
         });
     }])
 
-    .controller('storeController', function ($scope, store) {
-        $scope.path   = 'some-secret-namespace/db';
-        $scope.key = 'dbuname2';
-        $scope.value = 'dbpassword2';
+    .controller('storeController', function ($scope, $location, store, auth) {
+        $scope.path = 'some-secret-namespace/db';
+        $scope.key = '';
+        $scope.value = '';
 
-        $scope.store = function() {
+        if (!auth.getToken()) {
+            $location.path('/auth');
+        }
+
+        $scope.store = function () {
             store.save($scope.path, $scope.key, $scope.value, $scope.url, $scope.token)
                 .then(function (response) {
                     $scope.path = '';
                     $scope.key = '';
                     $scope.value = '';
-                    alert(response);
+                    alert('Secret saved - ' + response);
                 }, function (reason) {
-                    alert(reason);
+                    alert('Secret not saved - ' + reason);
                 });
         };
     })
@@ -31,16 +35,14 @@ angular.module('vaultPortal.store', ['ngRoute'] )
     .factory('store', function ($http) {
         return {
             save: function (path, key, value, url, token) {
-                console.log(path, key, value, url, token);
                 return $http({
                     url: url + '/v1/secret/' + path,
                     method: "POST",
-                    header: { 'X-Vault-Token': token},
+                    header: {'X-Vault-Token': token},
                     data: {db_username: key, db_password: value},
                 })
                     .then(function (results) {
-                        console.log(results.data.auth.client_token);
-                        return(results.data.auth.client_token);
+                        return (results.status);
                     })
             }
 

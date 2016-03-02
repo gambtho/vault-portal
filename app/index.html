@@ -11,36 +11,33 @@
     <link href="../node_modules/bootstrap-css-only/css/bootstrap-theme.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-default">
+
+<div class="navbar navbar-default">
     <div class="container-fluid">
-        <div class="navbar-header">
+        <div class="navbar-header pull-left">
             <a class="navbar-brand" href="#">Vault Portal</a>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a href="#/auth">auth</a></li>
-            <li><a href="#/store">store</a></li>
-            <li><a href="#/status">status</a></li>
-        </ul>
+        <div class="navbar-header pull-right">
+            <p class="navbar-btn">
+                <a href="#/auth" class="btn btn-default">Logout</a>
+            </p>
+        </div>
     </div>
-</nav>
+</div>
+
+
 <div class="container-fluid">
-        <div ng-view></div>
+    <div ng-view></div>
 
-        <div>Vault Portal: v<span app-version></span></div>
-
-        <!-- In production use:
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-        -->
-        <script src="../node_modules/angular/angular.js"></script>
-        <script src="../node_modules/angular-route/angular-route.js"></script>
-        <script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
-        <script src="app.js"></script>
-        <script src="store/store.js"></script>
-        <script src="status/status.js"></script>
-        <script src="auth/auth.js"></script>
-        <script src="components/version/version.js"></script>
-        <script src="components/version/version-directive.js"></script>
-        <script src="components/version/interpolate-filter.js"></script>
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="vaultPortal.js"></script>
+    <script src="store/store.js"></script>
+    <script src="auth/auth.js"></script>
 </div>
 </body>
 </html>

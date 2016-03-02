@@ -2,19 +2,16 @@
 //http://www.bradoncode.com/blog/2015/07/13/unit-test-promises-angualrjs-q/
 
 
-describe('Auth', function() {
+describe('Auth', function () {
 
 
     var valid_response = '{"auth": { "client_token": "efc845e5-e02f-cd28-ece0-32ed00c23afd"} }';
     var invalid_response = '{"errors":["invalid user ID or app ID"]}';
 
-    beforeEach(function () {
+    beforeEach(module('vaultPortal.auth'));
 
-        module('vaultPortal.auth');
-    });
-
-    describe('controller', function() {
-        var $scope, ctrl, $q, defer, spy;
+    describe('controller', function () {
+        var $scope, ctrl, $q, defer, loginSpy,  tokenSpy;
 
         beforeEach(function () {
 
@@ -24,7 +21,8 @@ describe('Auth', function() {
 
                 defer = _$q_.defer();
 
-                spy = spyOn(auth, 'login').and.returnValue(defer.promise);
+                loginSpy = spyOn(auth, 'login').and.returnValue(defer.promise);
+                tokenSpy = spyOn(auth, 'setToken');
 
                 ctrl = $controller('loginController', {
                     $scope: $scope,
@@ -38,13 +36,13 @@ describe('Auth', function() {
             expect(ctrl).toBeDefined();
         });
 
-        xit('should start with user and password not populated', function () {
+        it('should start with user and password not populated', function () {
             expect($scope.username).toEqual('');
             expect($scope.password).toEqual('');
         });
 
         it('should store token when valid user and password are provided', function () {
-            defer.resolve("blah");
+            defer.resolve("token");
             $scope.url = 'url';
             $scope.username = 'user';
             $scope.password = 'password';
@@ -52,8 +50,8 @@ describe('Auth', function() {
             $scope.login();
             $scope.$apply();
 
-            expect(spy).toHaveBeenCalledWith('url', 'user', 'password');
-            expect($scope.token).toEqual('blah');
+            expect(loginSpy).toHaveBeenCalledWith('url', 'user', 'password');
+            expect(tokenSpy).toHaveBeenCalledWith('token');
         });
 
         it('should not store a token when in-valid user and password are provided', function () {
@@ -65,8 +63,8 @@ describe('Auth', function() {
             $scope.login();
             $scope.$apply();
 
-            expect(spy).toHaveBeenCalledWith('url', 'bad-user', 'bad-password');
-            expect($scope.token).toEqual('');
+            expect(loginSpy).toHaveBeenCalledWith('url', 'bad-user', 'bad-password');
+            expect(tokenSpy.calls.any()).toEqual(false);
         });
     });
 
