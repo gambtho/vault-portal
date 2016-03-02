@@ -44,7 +44,7 @@ describe('Store', function () {
             expect($scope.value).toEqual('');
         });
 
-        it('should store a secret when data is provided', function () {
+        it('should store a secret when data is provided and confirm the save to the user', function () {
             defer.resolve(200);
             $scope.url = 'url';
             $scope.token = 'token';
