@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="vaultPortal" class="no-js lt-ie9 lt-ie8 lt-ie7">
+<html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>document.write('<base href="' + document.location + '" />');</script>
     <title>Vault Portal</title>
     <meta name="description" content="UI for interacting with Vault">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- use CDN in prod -->
-    <link href="../node_modules/bootstrap-css-only/css/bootstrap.css" rel="stylesheet">
-    <link href="../node_modules/bootstrap-css-only/css/bootstrap-theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 </head>
 <body>
 
@@ -27,17 +27,9 @@
 
 
 <div class="container-fluid">
-    <div ng-view></div>
-
-    <!-- In production use:
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-    -->
-    <script src="../node_modules/angular/angular.js"></script>
-    <script src="../node_modules/angular-route/angular-route.js"></script>
-    <script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
-    <script src="vaultPortal.js"></script>
-    <script src="store/store.js"></script>
-    <script src="auth/auth.js"></script>
+    <vault-portal>loading...</vault-portal>
+    <script src="vendor.bundle.js"></script>
+    <script src="bundle.js"></script>
 </div>
 </body>
 </html>
