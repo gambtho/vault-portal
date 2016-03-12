@@ -4,8 +4,9 @@ module.exports = function(config){
         basePath : '../',
 
         files : [
-            'dist/bundle.js',
-            'dist/vendor.bundle.js'
+            'dist/polyfills.bundle.js',
+            'dist/vendor.bundle.js',
+            'dist/app.bundle.js'
         ],
 
         autoWatch : true,

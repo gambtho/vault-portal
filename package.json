@@ -25,7 +25,11 @@
     "typescript": "^1.8.7",
     "typings": "^0.6.9",
     "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "awesome-typescript-loader": "0.15.10",
+    "ie-shim": "^0.1.0",
+    "source-map-loader": "^0.1.5",
+    "webpack-merge": "^0.8.3"
   },
   "scripts": {
     "pretest": "npm install",
