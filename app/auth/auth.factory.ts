@@ -15,12 +15,11 @@ export class AuthFactory {
 
     login(username, password) {
 
-        this.http.post(this.url + '/v1/auth/app-id/login', `app_id=${username}&password=${password}`)
-            .subscribe(
-                data => this.setToken(data),
-                err => console.log(err),
-                () => console.log(this.getToken())
-            );
+        return this.http.post(this.url + '/v1/auth/app-id/login', `app_id=${username}&password=${password}`)
+            .map( (responseData) => {
+                debugger;
+                return responseData.json();
+            })
     };
 
     setToken(string) {
@@ -31,4 +30,3 @@ export class AuthFactory {
     }
 
 }
-

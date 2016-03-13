@@ -1,9 +1,4 @@
-//http://www.benlesh.com/2013/05/angularjs-unit-testing-controllers.html
-//http://www.bradoncode.com/blog/2015/07/13/unit-test-promises-angualrjs-q/
-
-
 describe('Auth', function () {
-
 
     var valid_response = '{"auth": { "client_token": "efc845e5-e02f-cd28-ece0-32ed00c23afd"} }';
     var invalid_response = '{"errors":["invalid user ID or app ID"]}';

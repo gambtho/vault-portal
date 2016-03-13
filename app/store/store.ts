@@ -35,10 +35,15 @@ export class Store {
     constructor(public storeData: StoreData, public auth: AuthFactory, public router: Router){}
 
     store() {
-        // if auth.getToken is null, outer.navigate(['Heroes',  {id: heroId, foo: 'foo'} ]);
-        console.log(this.key, this.value);
-        this.storeData.save(this.key, this.value);
-      //  alert('Secret saved - ' + response);
+        if(this.auth.getToken()) {
+            console.log(this.key, this.value);
+            this.storeData.save(this.key, this.value);
+            alert('Secret saved');
+        }
+        else {
+            console.log("invalid token");
+            this.router.navigate(['Auth']);
+        }
     }
 }
 
