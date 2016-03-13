@@ -37,13 +37,23 @@ export class Store {
     store() {
         if(this.auth.getToken()) {
             console.log(this.key, this.value);
-            this.storeData.save(this.key, this.value);
-            alert('Secret saved');
+            this.storeData.save(this.key, this.value)
+            .subscribe(
+                data => this.success(data),
+                err => this.failure(err)
+            );
         }
         else {
             console.log("invalid token");
             this.router.navigate(['Auth']);
         }
     }
-}
 
+    success(data) {
+        alert("secret saved - " + data);
+    }
+
+    failure(err) {
+        alert("save error - " + err);
+    }
+}

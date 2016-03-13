@@ -34,17 +34,17 @@ describe('Store', function () {
 
         });
 
-        it('should have store controller defined', function () {
+        xit('should have store controller defined', function () {
             expect(ctrl).toBeDefined();
         });
 
-        it('should start with user and password not populated', function () {
+        xit('should start with user and password not populated', function () {
             //expect($scope.path).toEqual('');
             expect($scope.key).toEqual('');
             expect($scope.value).toEqual('');
         });
 
-        it('should store a secret when data is provided and confirm the save to the user', function () {
+        xit('should store a secret when data is provided and confirm the save to the user', function () {
             defer.resolve(200);
             $scope.url = 'url';
             $scope.token = 'token';
@@ -79,11 +79,11 @@ describe('Store', function () {
             httpBackend.verifyNoOutstandingRequest();
         });
 
-        it('should have store service defined', function () {
+        xit('should have store service defined', function () {
             expect(store).toBeDefined();
         });
 
-        it('should return token when valid user and password are provided', function () {
+        xit('should return token when valid user and password are provided', function () {
             var result = '';
             var returnData = '{ }';
             var url = 'url';

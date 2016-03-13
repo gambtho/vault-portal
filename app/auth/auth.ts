@@ -24,30 +24,32 @@ import {Router} from 'angular2/router';
 })
 
 export class Auth {
-    username: string;
-    password: string;
-    error: string;
-    url: string;
+    username:string;
+    password:string;
 
-    constructor(public auth: AuthFactory, public router: Router){
-        this.url = 'http://tg23qo-prod.apigee.net/v1';
+    constructor(public auth:AuthFactory, public router:Router) {
+        this.username = 'pcf-space-id';
+        this.password = 'pcf-service-instance-id';
     }
 
-    //username   = 'pcf-space-id';
-    //password  = 'pcf-service-instance-id';
 
     login() {
         this.auth.login(this.username, this.password)
-            .subscribe(res => this.validateAuth(res));
+            .subscribe(
+                res => this.validateAuth(res),
+                err => this.reset(err)
+            );
     };
 
     validateAuth(res) {
-        console.log(res);
         this.auth.setToken(res);
         console.log('token set');
         this.router.navigate(['Store']);
-        //if res.token - reset password
-        // $location.path('/auth');
+    }
+
+    reset(err) {
+        alert("login failed" + err);
+        this.router.navigate(['Auth']);
     }
 
 }
