@@ -32,12 +32,14 @@ export class Store {
     path: string;
     key: string;
     value: string;
-    constructor(public storeData: StoreData, public auth: AuthFactory, public router: Router){}
+    constructor(public storeData: StoreData, public auth: AuthFactory, public router: Router){
+        this.path = 'some-secret-namespace/db';
+    }
 
     store() {
         if(this.auth.getToken()) {
             console.log(this.key, this.value);
-            this.storeData.save(this.key, this.value)
+            this.storeData.save(this.path, this.key, this.value)
             .subscribe(
                 data => this.success(data),
                 err => this.failure(err)

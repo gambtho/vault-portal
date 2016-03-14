@@ -43,7 +43,6 @@ export class Auth {
 
     validateAuth(res) {
         this.auth.setToken(res);
-        console.log('token set');
         this.router.navigate(['Store']);
     }
 
