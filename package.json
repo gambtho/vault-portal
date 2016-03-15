@@ -6,29 +6,32 @@
   "repository": "https://github.com/gambtho/vault-portal/",
   "license": "Apache2",
   "devDependencies": {
+    "awesome-typescript-loader": "0.16.2",
     "html-loader": "^0.4.3",
+    "ie-shim": "^0.1.0",
     "jasmine-core": "^2.3.4",
     "karma": "~0.13",
     "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.5",
     "karma-firefox-launcher": "^0.1.6",
     "karma-jasmine": "^0.3.5",
     "karma-junit-reporter": "^0.4.0",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sinon": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
     "phantomjs-prebuilt": "^2.1.4",
     "protractor": "^3.1.1",
+    "remap-istanbul": "^0.5.1",
     "rimraf": "^2.5.2",
     "shelljs": "^0.6.0",
     "sinon": "^1.17.3",
+    "source-map-loader": "^0.1.5",
     "ts-loader": "^0.8.1",
     "typescript": "^1.8.7",
     "typings": "^0.7.8",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
-    "awesome-typescript-loader": "0.16.0-rc.0",
-    "ie-shim": "^0.1.0",
-    "source-map-loader": "^0.1.5",
     "webpack-merge": "^0.8.3"
   },
   "scripts": {
@@ -47,6 +50,7 @@
     "start": "npm run server",
     "postinstall": "npm run webdriver-update && typings install",
     "prestart": "npm install",
+    "plane": "webpack && karma start test/karma.conf.js  --single-run",
     "test-watch": "karma start test/karma.conf.js",
     "test": "npm run build && karma start test/karma.conf.js  --single-run",
     "preupdate-webdriver": "npm install",
@@ -55,11 +59,11 @@
     "protractor": "protractor test/protractor-conf.js"
   },
   "dependencies": {
-    "angular2": "^2.0.0-beta.9",
+    "angular2": "^2.0.0-beta.12",
     "es6-promise": "^3.1.2",
-    "es6-shim": "^0.33.13",
+    "es6-shim": "^0.35.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "^5.0.0-beta.2",
-    "zone.js": "^0.5.15"
+    "zone.js": "^0.6.8"
   }
 }

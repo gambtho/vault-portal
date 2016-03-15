@@ -1,7 +1,7 @@
 import {Component} from "angular2/core";
-import {StoreData} from './store.factory';
+import {StoreFactory} from './store.factory';
 import {AuthFactory} from '../auth/auth.factory';
-import {Router, RouteParams} from 'angular2/router';
+import {Router} from 'angular2/router';
 
 
 @Component({
@@ -32,7 +32,7 @@ export class Store {
     path: string;
     key: string;
     value: string;
-    constructor(public storeData: StoreData, public auth: AuthFactory, public router: Router){
+    constructor(public storeData: StoreFactory, public auth: AuthFactory, public router: Router){
         this.path = 'some-secret-namespace/db';
     }
 

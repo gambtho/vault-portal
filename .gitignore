@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+scratch
 
 # Runtime data
 pids

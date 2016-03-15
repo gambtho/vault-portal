@@ -1,3 +1,4 @@
+https://developers.livechatinc.com/blog/testing-angular-2-apps-dependency-injection-and-components/
 http://twofuckingdevelopers.com/2016/01/testing-angular-2-with-karma-and-jasmine/
 
 https://angular.io/docs/ts/latest/guide/upgrade.html#!#saying-goodbye-to-angular-1
@@ -5,23 +6,3 @@ https://github.com/webpack/karma-webpack
 
 https://auth0.com/blog/2015/10/15/angular-2-series-part-3-using-http/
 http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
-https://angular.io/docs/ts/latest/guide/router.html
-
-https://angular.io/docs/ts/latest/guide/upgrade.html#!#phonecat-preparation-tutorial
-
-https://angular.io/docs/ts/latest/guide/upgrade.html
-https://angular.io/docs/ts/latest/quickstart.html
-http://schempy.com/2016/01/19/angular2_webpack_typescript/
-https://github.com/schempy/angular2-typescript-webpack/tree/master/app
-https://github.com/preboot/angular2-webpack/tree/master/src/app
-https://webpack.github.io/docs/tutorials/getting-started/
-
-
-
-http://jbavari.github.io/blog/2014/06/11/unit-testing-angularjs-services/ (testing)
-https://thinkster.io/angularjs-jwt-auth (use jwt)
-http://www.bennadel.com/blog/2632-creating-asynchronous-alerts-prompts-and-confirms-in-angularjs.htm (alerts)
-http://codetunnel.com/angularjs-controller-as-or-scope/ (same as below, clean-up controller)
-http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/
-http://www.benlesh.com/2013/05/angularjs-unit-testing-controllers.html (how to test)
-http://www.benlesh.com/2013/06/angular-js-unit-testing-services.html

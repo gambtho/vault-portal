@@ -5,8 +5,8 @@ import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router'
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {Component} from "angular2/core";
 import {Store} from './store/store';
-import {StoreData} from './store/store.factory';
-import {Auth} from './auth/auth';
+import {StoreFactory} from './store/store.factory';
+import {Auth} from './auth/auth.component';
 import {AuthFactory} from './auth/auth.factory';
 
 
@@ -24,4 +24,4 @@ import {AuthFactory} from './auth/auth.factory';
 
 class VaultPortal {}
 
-bootstrap(VaultPortal, [StoreData, AuthFactory, HTTP_PROVIDERS, ROUTER_PROVIDERS]);
+bootstrap(VaultPortal, [StoreFactory, AuthFactory, HTTP_PROVIDERS, ROUTER_PROVIDERS]);

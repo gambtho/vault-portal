@@ -1,8 +1,9 @@
-﻿import {Component} from "angular2/core";
+﻿import {Component, Injectable, Input} from "angular2/core";
 import {AuthFactory} from './auth.factory';
 import {Router} from 'angular2/router';
+import 'rxjs/add/operator/map';
 
-
+@Injectable()
 @Component({
     selector: 'auth',
     template: `
@@ -28,11 +29,11 @@ export class Auth {
     password:string;
 
     constructor(public auth:AuthFactory, public router:Router) {
-        this.username = 'pcf-space-id';
-        this.password = 'pcf-service-instance-id';
+        this.username ='pcf-space-id';
+        this.password ='pcf-service-instance-id';
     }
 
-
+    
     login() {
         this.auth.login(this.username, this.password)
             .subscribe(
@@ -40,7 +41,7 @@ export class Auth {
                 err => this.reset(err)
             );
     };
-
+    
     validateAuth(res) {
         this.auth.setToken(res);
         this.router.navigate(['Store']);

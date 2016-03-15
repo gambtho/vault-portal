@@ -1,11 +1,10 @@
-import {HTTP_PROVIDERS} from 'angular2/http';
 import {Http} from "angular2/http";
 import {Injectable} from "angular2/core";
 import {Headers} from "angular2/http";
 import {AuthFactory} from '../auth/auth.factory';
 
 @Injectable()
-export class StoreData {
+export class StoreFactory {
     api:string;
     url:string;
     token:string;
@@ -20,13 +19,7 @@ export class StoreData {
         var headers = new Headers();
         headers.append('X-Vault-Token', this.token);
 
-        return this.http.post(this.url + this.api + path,
-            `
-            {
-                "db_username": "${key}",
-                "password": "${value}"
-            }
-            `,
+        return this.http.post(this.url + this.api + path, `{"db_username": "${key}","password": "${value}"}`,
             {headers: headers})
             .map((res) => {
                 return res.statusText;
