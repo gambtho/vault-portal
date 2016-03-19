@@ -15,19 +15,25 @@ var webpackConfig = {
         path: './dist',
     },
 
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
-    ],
-
+    // plugins: [
+    //     new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
+    // ],
+    //
     module: {
         preLoaders: [
             { test: /\.js$/, loader: 'source-map-loader', exclude: /node_modules(\/|\\)rxjs/ }
         ],
         loaders: [
-            // .ts files for TypeScript
-            { test: /\.ts$/, loader: 'awesome-typescript-loader' },
-
-        ],
+            { test: /\.ts$/, loader: 'awesome-typescript-loader',
+                query: {
+                    doTypeCheck: true,
+                    resolveGlobs: false,
+                    externals: ['typings/main.d.ts']
+                },
+                include: path.resolve('app'),
+                exclude: /node_modules/
+            }
+        ]
     }
 
 };

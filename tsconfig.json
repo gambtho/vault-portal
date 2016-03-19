@@ -9,6 +9,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node"
   },
+  "filesGlob": [
+    "**/*.ts",
+    "!node_modules/**/*"
+  ],
   "exclude": [
     "typings/main.d.ts",
     "typings/main",
@@ -18,3 +22,6 @@
   "buildOnSave": false,
   "atom": { "rewriteTsconfig": false }
 }
+
+
+
