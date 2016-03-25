@@ -1,6 +1,7 @@
 ﻿import {Component} from "angular2/core";
 import {AuthFactory} from './auth.factory';
 import {Router} from 'angular2/router';
+import 'rxjs/add/operator/map';
 
 
 @Component({

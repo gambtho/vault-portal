@@ -13,14 +13,13 @@ export class AuthFactory {
     }
 
     login(username, password) {
-        return this.http.post(this.url + '/v1/auth/app-id/login',
-            `
-            {
-                "app_id": "${username}",
-                "user_id":"${password}"
-            }
-            `
+        return this.http.post(this.url + '/v1/auth/app-id/login', 
+            `{ "app_id": "${username}","user_id":"${password}"}`
             )
+            // .do((res) => {
+            //     debugger;
+            //     console.log(res);
+            // })
             .map((res) => {
                 return res.json().auth.client_token;
             })
