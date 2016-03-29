@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/gambtho/vault-portal.png?label=ready&title=Ready)](https://waffle.io/gambtho/vault-portal)
 # Vault UI
 
 [![wercker status](https://app.wercker.com/status/545bc24f964b04486cb30defe0bcfa54/m "wercker status")](https://app.wercker.com/project/bykey/545bc24f964b04486cb30defe0bcfa54)
