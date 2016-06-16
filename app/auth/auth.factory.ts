@@ -7,11 +7,13 @@ export class AuthFactory {
     url:string;
 
     constructor(public http:Http) {
-        this.url = 'http://tg23qo-prod.apigee.net/v1';
+        // this.url = 'http://tg23qo-prod.apigee.net/v1';
+        this.url = 'http://ld1022.homedepot.com:8200'
     }
 
     login(username, password) {
-        return this.http.post(this.url + '/v1/auth/app-id/login', 
+
+        return this.http.post(this.url + '/v1/auth/app-id/login',
             `{ "app_id": "${username}","user_id":"${password}"}`
             )
             .map((res) => {

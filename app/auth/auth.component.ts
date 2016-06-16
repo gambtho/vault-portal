@@ -29,8 +29,8 @@ export class Auth {
     password:string;
 
     constructor(public auth:AuthFactory, public router:Router) {
-        this.username ='pcf-space-id';
-        this.password ='pcf-service-instance-id';
+        this.username ='app_id1';
+        this.password ='pcf-id';
     }
 
     
