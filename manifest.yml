@@ -1,6 +1,6 @@
 ---
 applications:
-- name: jermaine-vault
+- name: vault-ui
   instances: 1
   memory: 64m
   path: dist

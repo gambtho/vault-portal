@@ -69,7 +69,7 @@ describe('StoreFactory', () => {
                 var valid_request = `{"db_username": "${key}","password": "${value}"}`;
 
                 backend.connections.subscribe(c => {
-                    expect(c.request.url).toEqual('http://tg23qo-prod.apigee.net/v1/v1/secret/' + path);
+                    expect(c.request.url).toEqual('/v1/secret/' + path);
                     expect(c.request._body).toEqual(valid_request);
                     c.mockRespond(new Response(new ResponseOptions({statusText: '200'})));
                 });

@@ -55,8 +55,8 @@ describe('Auth Component', () => {
     }));
 
     it('initialize user and password', () => {
-        expect(component.username).toBe("pcf-space-id");
-        expect(component.password).toBe("pcf-service-instance-id");
+        expect(component.username).toBe("app_id1");
+        expect(component.password).toBe("pcf_id");
     });
 
 
