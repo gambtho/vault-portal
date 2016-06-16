@@ -10,8 +10,8 @@ export class StoreFactory {
     token:string;
 
     constructor(public http:Http, public auth:AuthFactory) {
-        this.api = '/v1/secret/';
-        this.url = 'http://tg23qo-prod.apigee.net/v1';
+        this.api = '/secret/';
+        this.url = '/v1';
         this.token = auth.getToken();
     }
 
