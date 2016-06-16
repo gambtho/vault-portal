@@ -7,8 +7,9 @@ export class AuthFactory {
     url:string;
 
     constructor(public http:Http) {
-        // this.url = 'http://tg23qo-prod.apigee.net/v1';
-        this.url = 'http://ld1022.homedepot.com:8200'
+        //this.url = 'http://tg23qo-prod.apigee.net/v1';
+        // this.url = 'http://ld1022.homedepot.com:8200'
+        this.url = '/vault'
     }
 
     login(username, password) {

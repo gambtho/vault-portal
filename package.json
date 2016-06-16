@@ -40,7 +40,7 @@
     "clean-install": "npm run clean && npm install",
     "clean-start": "npm run clean && npm start",
     "watch": "webpack --watch --progress --profile",
-    "build": "rimraf dist && webpack && cp app/index.html dist/",
+    "build": "rimraf dist && webpack && cp app/index.html dist/ && cp Staticfile dist/ && cp nginx.conf dist/",
     "server": "webpack-dev-server --inline --colors --progress --display-error-details --display-cached --port 8081 --content-base app",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start",

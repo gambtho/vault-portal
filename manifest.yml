@@ -2,7 +2,7 @@
 applications:
 - name: jermaine-vault
   instances: 1
-  memory: 128m
+  memory: 64m
   path: dist
   instances: 1
   random-route: false

@@ -30,7 +30,7 @@ export class Auth {
 
     constructor(public auth:AuthFactory, public router:Router) {
         this.username ='app_id1';
-        this.password ='pcf-id';
+        this.password ='pcf_id';
     }
 
     
