@@ -14,7 +14,7 @@ import {MockBackend} from 'angular2/http/testing';
 
 import {it, describe, expect, beforeEach} from 'angular2/testing';
 
-import {Injector, provide} from 'angular2/core';
+import {ReflectiveInjector, provide} from 'angular2/core';
 import {AuthFactory} from "../auth/auth.factory";
 
 class MockAuthFactory extends AuthFactory {
@@ -31,7 +31,7 @@ describe('StoreFactory', () => {
     var backend;
 
     beforeEach(() => {
-        injector = Injector.resolveAndCreate([
+        injector = ReflectiveInjector.resolveAndCreate([
             BaseRequestOptions,
             MockBackend,
             provide(

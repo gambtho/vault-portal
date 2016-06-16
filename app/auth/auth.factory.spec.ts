@@ -14,7 +14,7 @@ import {MockBackend} from 'angular2/http/testing';
 
 import {it, describe, expect, beforeEach} from 'angular2/testing';
 
-import {Injector, provide} from 'angular2/core';
+import {ReflectiveInjector, provide} from 'angular2/core';
 
 
 describe('AuthFactory', () => {
@@ -25,7 +25,7 @@ describe('AuthFactory', () => {
     var backend;
 
     beforeEach(() => {
-        injector = Injector.resolveAndCreate([
+        injector = ReflectiveInjector.resolveAndCreate([
             BaseRequestOptions,
             MockBackend,
             provide(
@@ -61,7 +61,7 @@ describe('AuthFactory', () => {
                 var valid_request = `{ "app_id": "user","user_id":"password"}`;
                 
                 backend.connections.subscribe(c => {
-                    expect(c.request.url).toEqual('http://tg23qo-prod.apigee.net/v1/v1/auth/app-id/login');
+                    expect(c.request.url).toEqual('/v1/auth/app-id/login');
                     expect(c.request._body).toEqual(valid_request);
                     c.mockRespond(new Response(new ResponseOptions({body: valid_response})));
                 });

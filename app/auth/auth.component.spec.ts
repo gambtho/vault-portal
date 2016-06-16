@@ -3,7 +3,7 @@ import { it, describe, expect, TestComponentBuilder, ComponentFixture,
     injectAsync, beforeEachProviders} from 'angular2/testing';
 
 
-import {provide, Injector} from 'angular2/core';
+import {provide, ReflectiveInjector} from 'angular2/core';
 import {Auth} from './auth.component';
 import {AuthFactory} from './auth.factory';
 import {Router} from "angular2/router";
@@ -24,7 +24,7 @@ describe('Auth Component', () => {
     var component;
     
     beforeEach(() => {
-        injector = Injector.resolveAndCreate([
+        injector = ReflectiveInjector.resolveAndCreate([
             provide(Router, {useClass: MockRouter}),
             provide(AuthFactory, {useClass: MockAuthFactory}),
             provide(
